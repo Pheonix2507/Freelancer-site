@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export function GET(request: NextRequest) {
+export function GET() {
     console.log("Health check request received");
     return NextResponse.json({ status: "ok" }, { status: 200 });
 };

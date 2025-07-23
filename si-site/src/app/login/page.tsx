@@ -6,6 +6,10 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
+export interface err {
+    message:string;
+};
+
 function Login() {
     const router = useRouter();
     const [email, setEmail] = useState('');
@@ -30,9 +34,10 @@ function Login() {
             console.log('Logged in successfully!', response.data);
             toast.success('Logged in successfully!');
             router.push("/home");
-        } catch (error: any) {
-            console.error('Login Failed!', error?.message);
-            toast.error(error?.message || 'Login failed!');
+        } catch (error: unknown) {
+            const errorMessage = (error as { message?: string })?.message;
+            console.error('Login Failed!', errorMessage);
+            toast.error(errorMessage || 'Login failed!');
         } finally {
             setLoading(false);
         }
@@ -66,7 +71,7 @@ function Login() {
                 >
                     Login
                 </button>
-                <span>Don't have an account? <Link href="/signup" className='underline'>signup here</Link></span>
+                <span>Don&apos;t have an account? <Link href="/signup" className='underline'>signup here</Link></span>
             </form>
         </div>
     )
