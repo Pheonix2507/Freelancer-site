@@ -1,6 +1,8 @@
 import { connectDB } from "@/dbConfig/dbConfig";
 import User from "@/models/userModel";
+import { sendEmail } from "@/utils/mailer";
 import bcrypt from "bcryptjs";
+import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
 connectDB();
@@ -27,6 +29,8 @@ export async function POST(req: NextRequest) {
             role
         });
         const savedUser = await newUser.save();
+
+        await sendEmail(email as string, "VERIFY", savedUser._id as mongoose.Schema.Types.ObjectId);
 
         return NextResponse.json({
             status: "success",
