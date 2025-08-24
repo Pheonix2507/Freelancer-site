@@ -1,5 +1,7 @@
+import jwt from 'jsonwebtoken';
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { tokenType } from "@/lib/types";
 
 export function middleware(req: NextRequest) {
     const token = req.cookies.get('token')?.value;
@@ -23,6 +25,19 @@ export function middleware(req: NextRequest) {
     // If user is NOT logged in and tries to access protected routes → redirect login
     if (!token && pathname !== '/login' && pathname !== '/signup') {
         return NextResponse.redirect(new URL('/login', req.url));
+    }
+
+    if(token) {
+        const tokenData = jwt.verify(token as string, process.env.JWT_SECRET as string) as tokenType;
+        if(tokenData.role !== "super-admin" && pathname === "/superadmin") {
+            return NextResponse.redirect(new URL('/login', req.url));
+        }
+        if(tokenData.role === "freelancer" && pathname === "/client") {
+            return NextResponse.redirect(new URL('/', req.url));
+        }
+        if(tokenData.role === "client" && pathname === "/freelancer") {
+            return NextResponse.redirect(new URL('/', req.url));
+        }
     }
 
     // Otherwise allow
