@@ -80,138 +80,143 @@ function SignUp() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold mb-6 text-center text-black">
-          {loading ? "Signing Up..." : "Sign Up"}
-        </h1>
-        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-5">
-          {/* Email */}
-          <Controller
-            name="email"
-            control={form.control}
-            rules={{ required: "Email is required" }}
-            render={({ field, fieldState }) => (
-              <div>
-                <label className="block text-gray-700 mb-1">Email:</label>
-                <input
-                  type="email"
-                  {...field}
-                  placeholder="Enter your email"
-                  className="w-full text-black px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
-                />
-                {fieldState.error && (
-                  <span className="text-xs text-red-500">
-                    {fieldState.error.message}
-                  </span>
-                )}
-              </div>
-            )}
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400">
+      <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-2xl border border-purple-300">
+      <h2 className="text-3xl font-extrabold pb-6 text-center text-gradient bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+        {loading ? "Signing Up..." : "Sign Up"}
+      </h2>
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
+        {/* Email */}
+        <Controller
+        name="email"
+        control={form.control}
+        rules={{ required: "Email is required" }}
+        render={({ field, fieldState }) => (
+          <div>
+          <label className="block text-purple-700 font-semibold mb-1">Email:</label>
+          <input
+            type="email"
+            {...field}
+            placeholder="Enter your email"
+            className="w-full text-black px-3 py-2 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
           />
-
-          {/* Name */}
-          <Controller
-            name="name"
-            control={form.control}
-            rules={{ required: "Name is required" }}
-            render={({ field, fieldState }) => (
-              <div>
-                <label className="block text-gray-700 mb-1">Name:</label>
-                <input
-                  type="text"
-                  {...field}
-                  placeholder="Enter your name"
-                  className="w-full px-3 text-black py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
-                />
-                {fieldState.error && (
-                  <span className="text-xs text-red-500">
-                    {fieldState.error.message}
-                  </span>
-                )}
-              </div>
-            )}
-          />
-
-          {/* Password */}
-          <Controller
-            name="password"
-            control={form.control}
-            rules={{
-              required: "Password is required",
-              pattern: {
-                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
-                message:
-                  "Password must be 8+ chars, include upper, lower, number, and symbol.",
-              },
-            }}
-            render={({ field, fieldState }) => (
-              <div>
-                <label className="block text-gray-700 mb-1">Password:</label>
-                <input
-                  type="password"
-                  {...field}
-                  placeholder="Enter your password"
-                  className="w-full px-3 text-black py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
-                />
-                <p className="text-xs text-gray-400 mt-1">
-                  Must be 8+ chars, include upper, lower, number, and symbol.
-                </p>
-                {fieldState.error && (
-                  <span className="text-xs text-red-500">
-                    {fieldState.error.message}
-                  </span>
-                )}
-              </div>
-            )}
-          />
-
-          {/* Confirm Password */}
-          <Controller
-            name="confirmPassword"
-            control={form.control}
-            rules={{
-              required: "Confirm Password is required",
-              validate: (value) =>
-                value === form.getValues("password") ||
-                "Passwords don't match",
-            }}
-            render={({ field, fieldState }) => (
-              <div>
-                <label className="block text-gray-700 mb-1">Confirm Password:</label>
-                <input
-                  type="password"
-                  {...field}
-                  placeholder="Confirm your password"
-                  className="w-full px-3 text-black py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
-                />
-                {fieldState.error && (
-                  <span className="text-xs text-red-500">
-                    {fieldState.error.message}
-                  </span>
-                )}
-              </div>
-            )}
-          />
-
-          {notMatching &&(<p className='text-red'> Password Not Matching</p>)}
-
-          <button
-            type="submit"
-            className="w-full py-2 bg-blue-600 cursor-pointer text-white rounded hover:bg-blue-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-            disabled={buttonDisabled || loading}
-          >
-            Sign Up
-          </button>
-
-          <div className="text-center mt-4">
-            <span className="text-gray-600">
-              Already have an account?{" "}
-              <Link href="/login" className="text-blue-600 underline">
-                login here
-              </Link>
+          {fieldState.error && (
+            <span className="text-xs text-red-500">
+            {fieldState.error.message}
             </span>
+          )}
           </div>
-        </form>
+        )}
+        />
+
+        {/* Name */}
+        <Controller
+        name="name"
+        control={form.control}
+        rules={{ required: "Name is required" }}
+        render={({ field, fieldState }) => (
+          <div>
+          <label className="block text-purple-700 font-semibold mb-1">Name:</label>
+          <input
+            type="text"
+            {...field}
+            placeholder="Enter your name"
+            className="w-full px-3 text-black py-2 border border-pink-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 transition"
+          />
+          {fieldState.error && (
+            <span className="text-xs text-red-500">
+            {fieldState.error.message}
+            </span>
+          )}
+          </div>
+        )}
+        />
+
+        {/* Password */}
+        <Controller
+        name="password"
+        control={form.control}
+        rules={{
+          required: "Password is required",
+          pattern: {
+          value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
+          message:
+            "Password must be 8+ chars, include upper, lower, number, and symbol.",
+          },
+        }}
+        render={({ field, fieldState }) => (
+          <div>
+          <label className="block text-purple-700 font-semibold mb-1">Password:</label>
+          <input
+            type="password"
+            {...field}
+            placeholder="Enter your password"
+            className="w-full px-3 text-black py-2 border border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
+          />
+          <p className="text-xs text-gray-400 mt-1">
+            Must be 8+ chars, include upper, lower, number, and symbol.
+          </p>
+          {fieldState.error && (
+            <span className="text-xs text-red-500">
+            {fieldState.error.message}
+            </span>
+          )}
+          </div>
+        )}
+        />
+
+        {/* Confirm Password */}
+        <Controller
+        name="confirmPassword"
+        control={form.control}
+        rules={{
+          required: "Confirm Password is required",
+          validate: (value) =>
+          value === form.getValues("password") ||
+          "Passwords don't match",
+        }}
+        render={({ field, fieldState }) => (
+          <div>
+          <label className="block text-purple-700 font-semibold mb-1">Confirm Password:</label>
+          <input
+            type="password"
+            {...field}
+            placeholder="Confirm your password"
+            className="w-full px-3 text-black py-2 border border-pink-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 transition"
+          />
+          {fieldState.error && (
+            <span className="text-xs text-red-500">
+            {fieldState.error.message}
+            </span>
+          )}
+          </div>
+        )}
+        />
+
+        {notMatching && watchPassword && watchConfirmPassword && (
+        <p className="text-sm text-pink-600 font-semibold text-center">
+          Passwords do not match
+        </p>
+        )}
+
+        {/* Shadcn Button */}
+        <button
+        type="submit"
+        className="w-full py-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-bold rounded-lg shadow-lg hover:scale-105 hover:from-blue-600 hover:to-pink-600 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        disabled={buttonDisabled || loading}
+        >
+        Sign Up
+        </button>
+
+        <div className="text-center mt-4">
+        <span className="text-gray-700 font-medium">
+          Already have an account?{" "}
+          <Link href="/login" className="text-purple-600 underline hover:text-pink-500 font-bold">
+          Login
+          </Link>
+        </span>
+        </div>
+      </form>
       </div>
     </div>
   );

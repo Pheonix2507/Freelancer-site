@@ -60,81 +60,87 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-sm p-8 bg-white rounded shadow-md">
-        <h1 className="text-2xl font-bold mb-6 text-center text-black">
-          {loading ? "Logging in..." : "Login"}
-        </h1>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <Controller
-            name="email"
-            control={control}
-            rules={{ required: "Email is required" }}
-            render={({ field, fieldState }) => (
-              <div>
-                <label className="block text-gray-700 mb-1">Email:</label>
-                <input
-                  type="email"
-                  {...field}
-                  placeholder="Enter your email"
-                  required
-                  className="w-full text-black px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
-                />
-                {fieldState.error && (
-                  <span className="text-xs text-red-500">{fieldState.error.message}</span>
-                )}
-              </div>
-            )}
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400">
+      <div className="w-full max-w-sm p-8 bg-background rounded-xl shadow-lg border border-purple-300">
+      <h1 className="text-2xl font-bold mb-6 text-center">
+        {loading ? "Logging in..." : "Login"}
+      </h1>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+        <Controller
+        name="email"
+        control={control}
+        rules={{ required: "Email is required" }}
+        render={({ field, fieldState }) => (
+          <div>
+          <label className="block text-sm font-medium mb-1" htmlFor="email">
+            Email
+          </label>
+          <input
+            id="email"
+            type="email"
+            {...field}
+            placeholder="Enter your email"
+            required
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-black"
           />
-
-          <Controller
-            name="password"
-            control={control}
-            rules={{
-              required: "Password is required",
-              pattern: {
-                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
-                message:
-                  "Password must be 8+ chars, include upper, lower, number, and symbol."
-              }
-            }}
-            render={({ field, fieldState }) => (
-              <div>
-                <label className="block text-gray-700 mb-1">Password:</label>
-                <input
-                  type="password"
-                  {...field}
-                  placeholder="Enter your password"
-                  required
-                  className="w-full px-3 text-black py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
-                />
-                {/* <p className="text-xs text-gray-400 mt-1">
-                  Must be 8+ chars, include upper, lower, number, and symbol.
-                </p> */}
-                {fieldState.error && (
-                  <span className="text-xs text-red-500">{fieldState.error.message}</span>
-                )}
-              </div>
-            )}
-          />
-
-          <button
-            type="submit"
-            disabled={!isValid || loading || buttonDisabled}
-            className="w-full py-2 cursor-pointer bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            Login
-          </button>
-
-          <div className="text-center mt-4">
-            <span className="text-gray-600">
-              Don&apos;t have an account?{" "}
-              <Link href="/signup" className="text-blue-600 underline">
-                signup here
-              </Link>
-            </span>
+          {fieldState.error && (
+            <span className="text-xs text-destructive">{fieldState.error.message}</span>
+          )}
           </div>
-        </form>
+        )}
+        />
+
+        <Controller
+        name="password"
+        control={control}
+        rules={{
+          required: "Password is required",
+          pattern: {
+          value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
+          message:
+            "Password must be 8+ chars, include upper, lower, number, and symbol."
+          }
+        }}
+        render={({ field, fieldState }) => (
+          <div>
+          <label className="block text-sm font-medium mb-1" htmlFor="password">
+            Password
+          </label>
+          <input
+            id="password"
+            type="password"
+            {...field}
+            placeholder="Enter your password"
+            required
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-black"
+          />
+          <p className="text-xs text-muted-foreground mt-1">
+            Must be 8+ chars, include upper, lower, number, and symbol.
+          </p>
+          {fieldState.error && (
+            <span className="text-xs text-destructive">{fieldState.error.message}</span>
+          )}
+          </div>
+        )}
+        />
+
+        <button
+        type="submit"
+        disabled={!isValid || loading || buttonDisabled}
+        className="w-full py-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-bold rounded-lg shadow-lg hover:scale-105 hover:from-blue-600 hover:to-pink-600 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+        Login
+        </button>
+
+        <div className="text-center mt-4">
+        <span className="text-muted-foreground">
+          Don&apos;t have an account?{" "}
+          <Link href="/signup" className="text-primary underline font-medium">
+          SignUp
+          </Link>
+        </span>
+        </div>
+      </form>
       </div>
     </div>
   );
