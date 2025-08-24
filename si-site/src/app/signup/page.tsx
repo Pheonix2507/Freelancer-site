@@ -69,7 +69,7 @@ function SignUp() {
       setLoading(true);
       const response = await axios.post("/api/signup", { email, name, password });
       toast.success("Signed Up successfully!");
-      console.log(response);
+      // console.log(response);
       router.push("/login");
     } catch (error: unknown) {
       const errorMessage = (error as { message?: string })?.message;
@@ -81,7 +81,24 @@ function SignUp() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400">
-      <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-2xl border border-purple-300">
+      <div className="absolute top-6 left-6">
+        <Link
+          href="/"
+          className="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow hover:bg-purple-100 transition font-semibold text-purple-700 border border-purple-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 text-purple-600"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7m-9 2v8m4-8v8m5-8l2 2m-2-2v8a2 2 0 01-2 2H7a2 2 0 01-2-2v-8" />
+          </svg>
+          Home
+        </Link>
+      </div>
+      <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-2xl border border-purple-300 md:">
       <h2 className="text-3xl font-extrabold pb-6 text-center text-gradient bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
         {loading ? "Signing Up..." : "Sign Up"}
       </h2>
