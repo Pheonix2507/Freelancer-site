@@ -1,0 +1,64 @@
+"use client";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+// import Image from "next/image";
+
+export default function Home() {
+      const router = useRouter();
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
+      <div className="flex items-center justify-center mb-8">
+        <svg
+          width="64"
+          height="64"
+          viewBox="0 0 64 64"
+          fill="none"
+          className="mr-4"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="32" cy="32" r="32" fill="#6366F1" />
+          <path
+            d="M20 36L32 24L44 36"
+            stroke="#fff"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M32 24V44"
+            stroke="#fff"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+        <span className="text-2xl font-semibold text-indigo-600">
+          FreelanceHub
+        </span>
+      </div>
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div className="absolute top-10 left-10 w-24 h-24 bg-indigo-100 rounded-full blur-2xl opacity-40"></div>
+        <div className="absolute bottom-10 right-10 w-32 h-32 bg-pink-100 rounded-full blur-2xl opacity-40"></div>
+      </div>
+      <h1 className="text-4xl font-bold mb-4 text-gray-900">
+      Welcome to FreelanceHub
+      </h1>
+      <p className="text-lg text-gray-600 mb-8 text-center max-w-xl">
+      Connect with top freelancers and clients worldwide. Start your journey to success with our professional freelancing platform.
+      </p>
+        <div className="flex">
+            This is exclusive content for Freelancer works only.
+            <div className="ml-6 flex flex-col items-center">
+                <span className="text-sm font-medium mb-2 text-indigo-700">Exclusive Image</span>
+                <div className="w-32 h-32 rounded-lg overflow-hidden border border-indigo-200 shadow">
+                    <img
+                        src="/download.jpg"
+                        alt="Exclusive Freelancer"
+                        className="object-cover w-full h-full"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+  );
+}

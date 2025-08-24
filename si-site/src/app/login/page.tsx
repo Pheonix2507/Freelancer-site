@@ -62,6 +62,23 @@ function Login() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400">
       <div className="w-full max-w-sm p-8 bg-background rounded-xl shadow-lg border border-purple-300">
+              <div className="absolute top-6 left-6">
+        <Link
+          href="/"
+          className="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow hover:bg-purple-100 transition font-semibold text-purple-700 border border-purple-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 text-purple-600"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7m-9 2v8m4-8v8m5-8l2 2m-2-2v8a2 2 0 01-2 2H7a2 2 0 01-2-2v-8" />
+          </svg>
+          Home
+        </Link>
+      </div>
       <h1 className="text-2xl font-bold mb-6 text-center">
         {loading ? "Logging in..." : "Login"}
       </h1>

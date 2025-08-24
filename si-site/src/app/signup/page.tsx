@@ -98,7 +98,7 @@ function SignUp() {
           Home
         </Link>
       </div>
-      <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-2xl border border-purple-300 md:">
+      <div className="w-full max-w-md bg-white p-6 md:p-8 rounded-xl shadow-2xl border border-purple-300 sm:px-4 xs:px-2">
       <h2 className="text-3xl font-extrabold pb-6 text-center text-gradient bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
         {loading ? "Signing Up..." : "Sign Up"}
       </h2>
